@@ -71,6 +71,14 @@ return (
                         <th className="px-3 py-6"> Email </th>
                         <th className="px-3 py-6"> Phone </th>
                         <th className="px-3 py-6"> Address </th>
+
+                        <th className="px-3 py-6"> Gender </th>
+                        <th className="px-3 py-6"> Age </th>
+                        <th className="px-3 py-6"> Date </th>
+                        <th className="px-3 py-6"> Time </th>
+                        <th className="px-3 py-6"> Image </th>
+
+
                         <th className="px-3 py-6">  Action </th>
                     </tr>
                 </thead>
@@ -112,6 +120,18 @@ return (
                             <td className="border-t">
                                 <span className="flex items-center px-3 py-3">
                                     {item.address}
+                                </span>
+                            </td>
+
+                            <td className="border-t">
+                                <span className="flex items-center px-3 py-3">
+                                    {item.gender}
+                                </span>
+                            </td>
+
+                            <td className="border-t">
+                                <span className="flex items-center px-3 py-3">
+                                    {item.age}
                                 </span>
                             </td>
 

@@ -14,7 +14,14 @@ const Edit = (props) => {
         last_name:  patient.last_name   || '',
         email:      patient.email       || '',
         phone:      patient.phone       || '',
-        address:    patient.address     || ''
+        address:    patient.address     || '',
+
+        gender:    patient.gender     || '',
+        age:    patient.age     || '',
+        date:    patient.date     || '',
+        time:    patient.time     || '',
+        image:    patient.image     || '',
+
     });
 
 

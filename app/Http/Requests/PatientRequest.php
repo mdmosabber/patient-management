@@ -29,6 +29,13 @@ class PatientRequest extends FormRequest
                 'email'      => 'nullable|email|unique:patients,email',
                 'phone'      => 'required|string|max:20',
                 'address'    => 'required|string',
+
+                'gender'     => 'required|in:male,female',
+                'age'       => 'required|integer',
+                'date'      => 'required|date',
+                'time'      => 'required|string',
+                'image'      => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
             ];
         } elseif ($this->routeIs('patient.update')) {
             return [
@@ -36,6 +43,11 @@ class PatientRequest extends FormRequest
                 'last_name'  => 'required|string|max:255',
                 'phone'      => 'required|string|max:20',
                 'address'    => 'required|string',
+
+                'gender'     => 'required|in:male,female',
+                'age'       => 'required|integer',
+                'date'      => 'required|date',
+                'time'      => 'required|string',
             ];
         }
         return [];

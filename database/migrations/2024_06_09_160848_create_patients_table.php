@@ -18,6 +18,13 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone');
             $table->text('address');
+
+            $table->enum('gender', ['male', 'female']);
+            $table->integer('age');
+            $table->date('date');
+            $table->time('time');
+            $table->string('image')->nullable();
+
             $table->timestamps();
         });
     }

@@ -22,6 +22,12 @@ class PatientFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
+
+            'gender' => $this->faker->randomElement(['male', 'female']),
+            'age' => $this->faker->numberBetween(1, 99),
+            'date' => $this->faker->date(),
+            'time' => $this->faker->time(),
+            'image' => $this->faker->imageUrl()
         ];
     }
 }

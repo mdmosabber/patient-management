@@ -27,6 +27,8 @@ Final class PatientService
         return Patient::create($data);
     }
 
+
+
     public function updatePatient(Patient $patient, array $data)
     {
         $patient->update($data);
