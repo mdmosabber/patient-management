@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2024 at 05:45 AM
+-- Generation Time: Jun 29, 2024 at 07:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
+  `uuid` varchar(191) NOT NULL,
   `connection` text NOT NULL,
   `queue` text NOT NULL,
   `payload` longtext NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(191) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -67,8 +67,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `token` varchar(191) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -80,11 +80,16 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `patients` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) NOT NULL,
+  `first_name` varchar(191) NOT NULL,
+  `last_name` varchar(191) NOT NULL,
+  `email` varchar(191) DEFAULT NULL,
+  `phone` varchar(191) NOT NULL,
   `address` text NOT NULL,
+  `gender` enum('male','female') NOT NULL,
+  `age` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `image` varchar(191) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -93,17 +98,18 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`id`, `first_name`, `last_name`, `email`, `phone`, `address`, `created_at`, `updated_at`) VALUES
-(28, 'Vladimir', 'Jacobson', 'vcasper@example.org', '(725) 741-0912', '492 Jarvis Way Suite 916\nDickinsonborough, NV 33014', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(29, 'Agustina', 'Wehner', 'albert.heller@example.org', '+19519364178', '7699 Ullrich Passage Apt. 366\nGersonmouth, SC 17291', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(30, 'Summer', 'Johnson', 'wisozk.green@example.net', '551-248-0765', '66257 Garry Cape Suite 874\nNew Rosemarie, KY 00112-7129', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(31, 'Brent', 'Abbott', 'jerome.shanahan@example.org', '+1-469-434-9496', '75877 Tillman Run Apt. 606\nBarbaraville, DE 95046-3559', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(32, 'Jamaal', 'Eichmann', 'wstokes@example.org', '+1-708-736-9945', '2503 Zelda Bypass\nLake Katharina, TX 28602-5759', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(33, 'Alexandre', 'Bauch', 'christelle.conroy@example.com', '+1 (754) 564-5918', '516 Hipolito Stravenue Suite 449\nNorth Jesusborough, IA 24057-2807', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(34, 'Hermina', 'McLaughlin', 'aletha13@example.com', '(606) 376-1700', '842 Brody Plaza Suite 486\nShannonmouth, CO 45591', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(35, 'Baylee', 'Tillman', 'macejkovic.beulah@example.org', '+1-458-471-0454', '6491 Kelvin Branch Suite 162\nArdithburgh, NH 34091', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(36, 'Wyman', 'Hodkiewicz', 'demario47@example.org', '443-429-3526', '51429 Velda Walk Apt. 917\nSouth Danika, IA 39860', '2024-06-10 21:45:29', '2024-06-10 21:45:29'),
-(37, 'Janessa', 'Towne', 'igleason@example.org', '+1-661-890-7808', '63810 Gaetano Causeway\nKrajcikland, TX 20238-6275', '2024-06-10 21:45:29', '2024-06-10 21:45:29');
+INSERT INTO `patients` (`id`, `first_name`, `last_name`, `email`, `phone`, `address`, `gender`, `age`, `date`, `time`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Nettie', 'Bartoletti', 'lgibson@example.net', '+1-608-216-2592', '25884 Koepp Mountains\nSouth Kailey, NM 32353', 'male', 66, '1986-02-17', '04:21:08', 'https://via.placeholder.com/640x480.png/00bb55?text=sed', '2024-06-29 11:35:54', '2024-06-29 11:35:54'),
+(2, 'Stefan', 'Johnston', 'niko82@example.net', '1-281-955-8895', '209 Savanah Summit Apt. 955\nLueilwitzville, MI 43942-6151', 'female', 60, '2004-07-21', '06:41:16', 'https://via.placeholder.com/640x480.png/006666?text=voluptas', '2024-06-29 11:35:54', '2024-06-29 11:35:54'),
+(3, 'Camren', 'Nitzsche', 'king.cristopher@example.net', '+16292178849', '43798 Hickle Pass\nHoweville, TN 73219', 'female', 7, '1980-02-17', '06:01:11', 'https://via.placeholder.com/640x480.png/0011dd?text=libero', '2024-06-29 11:35:54', '2024-06-29 11:35:54'),
+(4, 'Enrico', 'Bins', 'ronaldo74@example.com', '740-941-2570', '7228 Reynold Turnpike Apt. 553\nWest Augustusborough, KY 52276-9654', 'male', 5, '1985-04-19', '00:14:32', 'https://via.placeholder.com/640x480.png/00aabb?text=tenetur', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(5, 'Amelie', 'Dooley', 'iroberts@example.com', '971.387.2720', '299 Dulce Union\nLake Omer, CO 27328-5021', 'female', 53, '1984-02-21', '06:36:59', 'https://via.placeholder.com/640x480.png/00ccaa?text=rem', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(6, 'Lavada', 'Kerluke', 'akuhn@example.net', '1-863-589-5614', '89847 Considine Garden\nHettingermouth, CT 91697', 'male', 64, '2023-05-03', '09:22:29', 'https://via.placeholder.com/640x480.png/008899?text=dolor', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(7, 'Garett', 'Schmeler', 'misael.osinski@example.org', '+13517837634', '9616 Ebert Neck\nFridafort, WV 30834-6875', 'male', 45, '2003-03-05', '13:43:38', 'https://via.placeholder.com/640x480.png/005566?text=excepturi', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(8, 'Tracey', 'Stroman', 'spencer.marie@example.net', '+1.361.382.6762', '186 Darron Port Apt. 241\nLake Ryannville, MA 22637-4074', 'male', 36, '1995-06-09', '16:10:40', 'https://via.placeholder.com/640x480.png/002222?text=optio', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(9, 'Rod', 'Medhurst', 'anastasia03@example.com', '662.835.1454', '3474 Ruecker Crescent\nBeiershire, AZ 14846-2935', 'female', 89, '2001-09-11', '06:35:32', 'https://via.placeholder.com/640x480.png/00ddcc?text=aut', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(10, 'Braeden', 'Gibson', 'demetrius82@example.net', '1-304-360-9315', '300 Lindgren Park Suite 547\nDawsonmouth, DE 79125-3972', 'male', 17, '1995-10-14', '19:47:24', 'https://via.placeholder.com/640x480.png/00ee00?text=quas', '2024-06-29 11:35:55', '2024-06-29 11:35:55'),
+(11, 'abc', 'hossen', 'abc@gmail.com', '01723267508', 'Hello', 'male', 23, '2024-07-05', '12:22:00', 'assets/images/patient/66804636c36f8_1719682614_patient_image.png', '2024-06-29 11:36:54', '2024-06-29 11:36:54');
 
 -- --------------------------------------------------------
 
@@ -113,9 +119,9 @@ INSERT INTO `patients` (`id`, `first_name`, `last_name`, `email`, `phone`, `addr
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(191) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(191) NOT NULL,
   `token` varchar(64) NOT NULL,
   `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
@@ -132,15 +138,15 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `name` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `phone` varchar(191) DEFAULT NULL,
+  `image` varchar(191) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_by` varchar(255) DEFAULT NULL,
-  `updated_by` varchar(255) DEFAULT NULL,
-  `deleted_by` varchar(255) DEFAULT NULL,
+  `password` varchar(191) NOT NULL,
+  `created_by` varchar(191) DEFAULT NULL,
+  `updated_by` varchar(191) DEFAULT NULL,
+  `deleted_by` varchar(191) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -152,7 +158,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `image`, `email_verified_at`, `password`, `created_by`, `updated_by`, `deleted_by`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(26, 'admin', 'admin@gmail.com', '629.482.0797', NULL, '2024-06-10 21:45:29', '$2y$10$x2JcqaHdb1CvhHJME0IyH.R9ErFdFL4EfSmsh4st1vTAKQ3a7i9pu', NULL, NULL, NULL, '75elu5Ap9s', '2024-06-10 21:45:29', '2024-06-10 21:45:29', NULL);
+(1, 'admin', 'admin@gmail.com', '+1 (517) 577-7552', NULL, '2024-06-29 11:35:54', '$2y$10$ElyZqlQuk8QpWwa11LSO3u8Jai.9Doqk7JnHdiASGva6SPGh3Hr96', NULL, NULL, NULL, 'dIYcQ7QmIJ', '2024-06-29 11:35:54', '2024-06-29 11:35:54', NULL);
 
 --
 -- Indexes for dumped tables
@@ -219,7 +225,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -231,7 +237,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

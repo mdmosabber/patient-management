@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(ProfileController::class)->group(function (){
         Route::get('/profile',  'edit')->name('profile.edit');
         Route::patch('/profile',  'update')->name('profile.update');
-//        Route::delete('/profile',  'destroy')->name('profile.destroy');
+        Route::delete('/profile',  'destroy')->name('profile.destroy');
 
         Route::get('user/show', 'allUserView')->name('admin.show');
         Route::post('user/search', 'adminSearch')->name('user.search');
@@ -49,11 +50,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('user/permanent/delete/{id}', 'permanentDelete')->name('admin.permanent-delete');
     });
 
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->middleware('auth');
-
 
     //====== Patient ======
-    Route::resource('patient', \App\Http\Controllers\PatientController::class);
+    Route::post('patient/update/{id}',[PatientController::class, 'update'])->name('patient.update.post');
+    Route::resource('patient', PatientController::class);
 
 });
 

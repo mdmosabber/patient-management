@@ -134,6 +134,24 @@ return (
                                     {item.age}
                                 </span>
                             </td>
+                            <td className="border-t">
+                                <span className="flex items-center px-3 py-3">
+                                    {item.date}
+                                </span>
+                            </td>
+
+                            <td className="border-t">
+                                <span className="flex items-center px-3 py-3">
+                                    {item.time}
+                                </span>
+                            </td>
+                            <td className="border-t">
+                                <span className="flex items-center px-3 py-3">
+                                     <img src={item.image}  alt="image"/>
+                                </span>
+                            </td>
+
+
 
                             <td className="border-t">
                                 <Link href={route('patient.edit',item.id)}>

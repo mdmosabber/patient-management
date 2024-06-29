@@ -45,6 +45,10 @@ class PatientControllerTest extends TestCase
             'email' => 'john.doe@example.com',
             'phone' => '1234567890',
             'address' => '123 Main St',
+            'gender' => 'male',
+            'age' => '30',
+            'date' => '2024-06-04',
+            'time' => '19:40:29',
         ];
 
         $response = $this->post(route('patient.store'), $data);
@@ -73,6 +77,10 @@ class PatientControllerTest extends TestCase
             'last_name' => 'Doe',
             'phone' => '0987654321',
             'address' => '456 Another St',
+            'gender' => 'male',
+            'age' => '30',
+            'date' => '2024-06-04',
+            'time' => '19:40:29'
         ];
 
         $response = $this->put(route('patient.update', $patient->id), $data);

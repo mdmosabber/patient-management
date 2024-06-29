@@ -36,6 +36,11 @@ class PatientServiceTest extends TestCase
             'email' => 'john.doe@example.com',
             'phone' => '1234567890',
             'address' => '123 Main St',
+            'gender' => 'male',
+            'age' => '30',
+            'date' => '2024-06-04',
+            'time' => '19:40:29',
+            'image' => 'https://via.placeholder.com/640x480.png/00eeee?tex...',
         ];
 
         $patient = $this->patientService->createPatient($data);
@@ -54,6 +59,11 @@ class PatientServiceTest extends TestCase
             'email' => 'jane.doe@example.com',
             'phone' => '0987654321',
             'address' => '456 Another St',
+            'gender' => 'male',
+            'age' => '30',
+            'date' => '2024-06-04',
+            'time' => '19:40:29',
+            'image' => 'https://via.placeholder.com/640x480.png/00eeee?tex...',
         ];
 
         $updatedPatient = $this->patientService->updatePatient($patient, $data);

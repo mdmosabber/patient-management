@@ -20,6 +20,8 @@ class PatientController extends Controller
         $this->patientService = $patientService;
     }
 
+
+
     public function index(Request $request):Response
     {
         $query = $request->input('search');
@@ -28,10 +30,14 @@ class PatientController extends Controller
         return Inertia::render('backend/patient/Index', ['patients' => $patients]);
     }
 
+
+
     public function create():Response
     {
         return Inertia::render('backend/patient/Create');
     }
+
+
 
     public function store(PatientRequest $request):RedirectResponse
     {
@@ -61,10 +67,28 @@ class PatientController extends Controller
         return Inertia::render('backend/patient/Edit', ['patient' => $patient]);
     }
 
-    public function update(PatientRequest $request, Patient $patient):RedirectResponse
+
+
+    public function update(PatientRequest $request, $id):RedirectResponse
     {
         try {
+            $patient =  Patient::findOrFail($id);
+
             $validated = $request->validated();
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $imageName = uniqid() . '_' . time() . '_patient_image.' . $file->getClientOriginalExtension();
+                $directory = 'assets/images/patient/';
+                $file->move($directory, $imageName);
+                $validated['image'] =  $directory. $imageName;;
+
+                // Delete old file if it exists
+                if ($patient->image && file_exists(public_path($patient->image))) {
+                    unlink(public_path($patient->image));
+                }
+            }
+
             $this->patientService->updatePatient($patient, $validated);
 
             return Redirect::route('patient.index')->with('success', 'Patient updated successfully');
@@ -72,6 +96,8 @@ class PatientController extends Controller
             return Redirect::back()->with('error', 'An error occurred while updating the patient.')->withInput();
         }
     }
+
+
 
     public function destroy(Patient $patient):RedirectResponse
     {

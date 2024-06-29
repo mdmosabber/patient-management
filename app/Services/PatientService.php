@@ -37,6 +37,13 @@ Final class PatientService
 
     public function deletePatient(Patient $patient)
     {
+
+        $patient =  Patient::findOrFail($patient->id);
+
+        if (file_exists($patient->image)) {
+            unlink($patient->image);
+        }
+
         $patient->delete();
     }
 }
